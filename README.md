@@ -1,44 +1,71 @@
-# Snap Template
+# X Profile Snap
 
-Standalone TypeScript + pnpm template for building Farcaster snaps with Hono.
+A [Farcaster Snap](https://docs.farcaster.xyz/snap) that displays your linked **X (Twitter) profile** directly inside a Farcaster cast. Viewers can follow you on X, share their own profile snap, or follow the developer — all without leaving their feed.
 
-## Use outside this monorepo
+## Features
 
-To copy this template into a new project (without cloning the whole repo):
+- 🐦 **X Profile display** — shows your X username
+- 🔗 **Follow on X** button — deeplinks directly to your X profile (only shown if you have an X account linked on Farcaster)
+- 📢 **Share Yours** — lets any viewer cast their own version of this snap
+- 👤 **Follow dev** button — links to the developer's X account
 
-```bash
-npx degit farcasterxyz/snap/template my-snap
-cd my-snap && pnpm install
-```
+## How It Works
 
-Then set dependencies in `package.json` to published versions of `@farcaster/snap` and `@farcaster/snap-hono` (or keep `workspace:*` only when developing inside the monorepo).
+When someone opens the snap, it:
+1. Reads the `fid` (Farcaster ID) from the URL query param
+2. Fetches the user's profile from the Farcaster API
+3. Checks for a linked X account via `connectedAccounts`
+4. Renders a Snap UI with profile info and action buttons
 
-## Stack
+## Tech Stack
 
-- Hono app in **`src/index.ts`** with `@farcaster/snap-hono` (`registerSnapHandler`) for GET/POST handling and validation
-- Local server: **`src/server.ts`** (default port **3003**)
-- `registerSnapHandler` verifies JFS signatures. For local developopment, use SKIP_JFS_VERIFICATION=true.
+| | |
+|---|---|
+| Runtime | [Hono](https://hono.dev/) on Node.js |
+| Snap SDK | `@farcaster/snap` + `@farcaster/snap-hono` |
+| Language | TypeScript |
+| Package manager | pnpm |
+| Hosting | [Neynar Host](https://host.neynar.app) |
 
-## What this starter shows
-
-The first page is a short **onboarding** flow: a topic row and **Refresh** (POST) mirror the **current-time** example pattern—pick a chip, post, and read updated copy. Replace the handler body with your own snap.
-
-## Endpoints
-
-- `GET /` without `Accept: application/vnd.farcaster.snap+json` returns a short plain-text hint for browsers
-- `GET /` with the snap Accept header returns the first page
-- `POST /` accepts a JFS-shaped snap interaction payload (signature verified in production only by default) and returns the next page
-- Response pages follow current spec limits (max 5 elements, text length constraints)
-
-## Local development
+## Local Development
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-The server runs on `http://localhost:3003` by default.
+The server starts at `http://localhost:3003`.
 
-## Deploying
+## Deployment
 
-The fastest way to deploy is using https://host.neynar.app. Tell your agent to read [SKILL.md](https://docs.farcaster.xyz/snap/SKILL.md) and then deploy with `framework=hono`.
+Deployment is handled via Neynar's hosting API. Package the project first:
+
+```bash
+bash package-for-host-neynar.sh
+```
+
+Then deploy using the `deploy.ps1` script (kept out of version control — contains API key):
+
+```powershell
+# deploy.ps1
+curl.exe -X POST https://api.host.neynar.app/v1/deploy `
+  -H "Authorization: Bearer <YOUR_API_KEY>" `
+  -F "files=@google-snap.tar.gz" `
+  -F "projectName=google-snap-sahban" `
+  -F "framework=hono" `
+  -F 'env={"SNAP_PUBLIC_BASE_URL":"https://google-snap-sahban.host.neynar.app"}'
+```
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `SNAP_PUBLIC_BASE_URL` | Public URL of the deployed snap (used to build action targets) |
+
+## Live URL
+
+`https://google-snap-sahban.host.neynar.app`
+
+---
+
+Built by [@cashlessman.eth](https://x.com/kashlessman)
