@@ -1,0 +1,93 @@
+url: https://api.farcaster.xyz/v2/user?fid=2
+
+
+{
+  "result": {
+    "user": {
+      "fid": 2,
+      "displayName": "Varun Srinivasan",
+      "profile": {
+        "bio": {
+          "text": "Technowatermelon. Elder Millenial. Building Farcaster. \n\nnf.td/varun",
+          "mentions": [],
+          "channelMentions": []
+        },
+        "location": {
+          "placeId": "ChIJE9on3F3HwoAR9AhGJW_fL-I",
+          "description": "Los Angeles, CA, USA"
+        },
+        "earlyWalletAdopter": true,
+        "accountLevel": "pro",
+        "url": "",
+        "profileToken": {
+          "tokenUri": "eip155:8453/erc20:0x4200000000000000000000000000000000000006",
+          "token": {
+            "chain": "base",
+            "ca": "0x4200000000000000000000000000000000000006",
+            "tokenId": "0198d3d2-db2c-314e-a273-307fc6b6831e",
+            "name": "Wrapped Ether",
+            "ticker": "WETH",
+            "symbol": "WETH",
+            "imageUrl": "https://coin-images.coingecko.com/coins/images/39810/large/weth.png?1724139790"
+          }
+        }
+      },
+      "followerCount": 262628,
+      "followingCount": 1854,
+      "username": "v",
+      "pfp": {
+        "url": "https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/e3d80f99-f7c0-4b04-dcad-557593d85500/original",
+        "verified": false
+      },
+      "referrerUsername": "farcaster",
+      "connectedAccounts": [
+        {
+          "connectedAccountId": "0195d02e-1a31-c9e4-c559-96ce6f717508",
+          "platform": "x",
+          "username": "varunsrin",
+          "expired": false
+        }
+      ],
+      "viewerContext": {
+        "following": false,
+        "followedBy": false,
+        "canSendDirectCasts": false,
+        "enableNotifications": false,
+        "hasUploadedInboxKeys": true
+      }
+    },
+    "collectionsOwned": [],
+    "extras": {
+      "fid": 2,
+      "custodyAddress": "0x4114e33eb831858649ea3702e1c9a2db3f626446",
+      "ethWallets": [
+        "0x91031DCFdEa024b4d51e775486111d2b2A715871",
+        "0x182327170fC284cAaA5b1bC3e3878233f529D741",
+        "0xF86a7A5b7C703b1fD8d93c500aC4cC75b67477f0",
+        "0x661E2209B9C6B06C1F32A0639f60D3294185ab35",
+        "0xD33FA9b999D59722B82C1Cc52db9D74e109CDA2F"
+      ],
+      "solanaWallets": [
+        "9t92xZy9q5SyfKBH4rZwEDFXjaZKgzj5PgviPhKtBjyy",
+        "97c51MXLjrHBMzSZSNVWXmnXPzKWkQ6jSNWxJFPDdKuN"
+      ],
+      "walletLabels": [
+        {
+          "address": "0x661E2209B9C6B06C1F32A0639f60D3294185ab35",
+          "labels": [
+            "primary",
+            "warpcast"
+          ]
+        },
+        {
+          "address": "97c51MXLjrHBMzSZSNVWXmnXPzKWkQ6jSNWxJFPDdKuN",
+          "labels": [
+            "primary",
+            "warpcast"
+          ]
+        }
+      ],
+      "publicSpamLabel": "2 (unlikely to engage in spammy behavior)"
+    }
+  }
+}
